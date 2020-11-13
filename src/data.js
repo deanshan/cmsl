@@ -53,8 +53,8 @@ export const GetTargetConst = (constant, value, key) => {
     }
 }
 
-// NumberFormat 2 decimal places reserved by default
-export const NumberFormat = (type, number, other) => {
+// DigitalFormat 2 decimal places reserved by default
+export const DigitalFormat = (type, number, other) => {
     let total = '0';
     switch(type) {
         case "+":

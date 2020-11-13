@@ -35,7 +35,7 @@
 + value{string}(必填)  匹配constant中的value值
 + key{string}(必填) 匹配constant中的key值
 
-#### NumberFormat(*type, number, other*)：计算2位（包括2位）以内的小数，主要用于金额的准确率（避免出现0.+0.2,0.8*3误差)
+#### DigitalFormat(*type, number, other*)：计算2位（包括2位）以内的小数，主要用于金额的准确率（避免出现0.+0.2,0.8*3误差)
 
 + 返回值{number}
 + type{string}(必填)  可选值 '+'、'-'、'*'、'/'
