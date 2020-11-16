@@ -11,13 +11,13 @@ export const DateTimeStandard = (dateTime, isTime = true) => {
 
 /**
  * date time format default format: yy-mm-dd hh:mm:ss
- * DateTimeFormat({ts[,type,flag,isTime]})
+ * dateTimeFormat({ts[,type,flag,isTime]})
  * @param {number} ts
  * @param {string} flag 默认值：'-'
  * @param {boolean} isTime 是否含有具体时间 默认值 ture
  * @param {string} type 可选值：'YM'、'MD'（不区分大小写） 默认值：'YMD'
  */
-export const DateTimeFormat = ({ts, flag = '-', isTime = true, type = 'ymd'}) => {
+export const dateTimeFormat = ({ts, flag = '-', isTime = true, type = 'ymd'}) => {
     let year    = new Date(ts).getFullYear();
     let month   = new Date(ts).getMonth()+1 < 10 ? "0" + (new Date(ts).getMonth()+1) : new Date(ts).getMonth() + 1;
     let day     = new Date(ts).getDate()    < 10 ? "0" + new Date(ts).getDate()      : new Date(ts).getDate();
