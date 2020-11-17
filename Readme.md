@@ -50,3 +50,15 @@
 + flag{string}（选填）  日期的拼接格式  默认值 '-'
 + isTime{boolean}（选填）    返回值是否包括时间  默认值 true
 + type{string}（选填）  返回的日期格式（yy-mm-dd)  可选值 'YMD'、'YM'、'MD'
+
+#### dateFormatConversion(*dateTime[,isTime]*)  日期格式转换（兼容Safari和IE）
++ 返回值{number}    时间戳
++ dateTime{string}（必传）  标准时间，格式为：yy-mm-dd 或 yy.mm.dd 或 yy/mm/dd
++ isTime{boolean}（选填）   返回的时间戳是否包含具体时间，默认值 true
+
+### DOM操作
+
+#### trim(*str[,type]*)  去除（a：所有，b：两边，l：左边，r：右边）空格
++ 返回值{number}    时间戳
++ str{string}（必传）
++ type{string}（选填）  可选值 'a','b','l','r'，默认值 'a'

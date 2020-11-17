@@ -1,10 +1,10 @@
 /**
- * For Safari / IE browser, Date "-" conversion "/"
- * @param {string} dateTime 标准日期
- * @param {boolean} isTime 是否删除时间，默认值 true
+ * Safari and IE are not compatible with '-' and '.', all conversion "/"
+ * @param {string} dateTime 标准日期, 格式为 yy-mm-dd hh:mm:ss 或 yy-mm-dd
+ * @param {boolean} isTime 返回的时间戳是否包含具体时间，默认值 true
  */
-export const DateTimeStandard = (dateTime, isTime = true) => {
-    let t = dateTime.replace(/-/g, "/");
+export const dateFormatConversion = (dateTime, isTime = true) => {
+    let t = dateTime.replace(/-/g, "/").replace(/\./g,'/');
     if(isTime) t = t.replace(/\d\d:\d\d:\d\d/, "");
     return new Date(t).getTime();
 }

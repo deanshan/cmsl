@@ -8,11 +8,11 @@ import * as dom from './dom'
 import * as regExp from './regExp'
 
 // date time process
-import * as dateTime from './dateTime'
+import * as date from './date'
 
 export default {
     ...data,
+    ...date,
     ...dom,
     ...regExp,
-    ...dateTime,
 }

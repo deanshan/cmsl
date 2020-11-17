@@ -1,6 +1,6 @@
 {
   "name": "cmsl",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "collection of common methods",
   "main": "./dist/cmsl.min.js",
   "scripts": {
@@ -23,6 +23,7 @@
     "@babel/polyfill": "^7.10.1",
     "@babel/preset-env": "^7.10.2",
     "babel-loader": "^8.1.0",
+    "clean-webpack-plugin": "^3.0.0",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11"
   }
