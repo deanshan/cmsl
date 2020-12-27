@@ -72,3 +72,8 @@ export const digitalFormat = (type, number, other) => {
     }
     return total.toFixed(2);
 }
+
+// 数字格式化为千分位
+export const digitalToThousandth = params => {
+    return params.toString().replace(/\d{1,3}(?=(\d{3})+(?:$|\.))/g,s=> `${s},`);
+}

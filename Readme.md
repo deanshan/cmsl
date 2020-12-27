@@ -42,6 +42,11 @@
 + number{string,number}(必填)
 + other{string,number}(必填)  当type为'/'是，不建议值为0，如果为0，默认返回0
 
+#### digitalToThousandth(*params*)：数字格式化为千分位
+
++ 返回值{string}
++ params{string,number}(必填)
+
 ### 日期时间
 
 #### dateTimeFormat(*{ts[,type,flag,isTime]}*)  日期格式化
