@@ -44,8 +44,8 @@
 
 #### digitalToThousandth(*params*)：数字格式化为千分位
 
-+ 返回值{string}
-+ params{string,number}(必填)
++ 返回值{string} 不传，默认返回""
++ params{string,number}(选填)
 
 ### 日期时间
 
