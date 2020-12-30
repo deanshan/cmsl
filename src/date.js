@@ -18,6 +18,9 @@ export const dateFormatConversion = (dateTime, isTime = true) => {
  * @param {string} type 可选值：'YM'、'MD'（不区分大小写） 默认值：'YMD'
  */
 export const dateTimeFormat = ({ts, flag = '-', isTime = true, type = 'ymd'}) => {
+
+    if(!ts) return null;
+
     let year    = new Date(ts).getFullYear();
     let month   = new Date(ts).getMonth()+1 < 10 ? "0" + (new Date(ts).getMonth()+1) : new Date(ts).getMonth() + 1;
     let day     = new Date(ts).getDate()    < 10 ? "0" + new Date(ts).getDate()      : new Date(ts).getDate();
