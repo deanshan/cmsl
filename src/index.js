@@ -5,7 +5,7 @@ import * as data from './data'
 import * as dom from './dom'
 
 // regular expression
-import * as regExp from './regExp'
+// import * as regExp from './regExp'
 
 // date time process
 import * as date from './date'
@@ -14,5 +14,5 @@ export default {
     ...data,
     ...date,
     ...dom,
-    ...regExp,
+    // ...regExp,
 }
