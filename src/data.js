@@ -1,12 +1,22 @@
 const _toString = Object.prototype.toString;
 
-// get data type
+/**
+ * 获取数据类型
+ * @param {any} target
+ */
 export const getDataType = target => _toString.call(target).slice(8, -1);
 
-// match data type
+/**
+ * 精准匹配数据类型
+ * @param {any} target
+ * @param {String} type 可选值 Null、Undefined、String、Array、Object、FormData...
+ */
 export const matchDataType = (target, type) => Object.is(_toString.call(target).slice(8, -1), type);
 
-// filter data type for example null/undefined/""/[]/{}
+/**
+ * 过滤指定数据类型 如[]、{}、""（包括去空格）、null、undefined
+ * @param {any} params
+ */
 export const filterDataType = params =>
     matchDataType(params, "Null") ||
     matchDataType(params, "Undefined") ||
@@ -14,7 +24,10 @@ export const filterDataType = params =>
     (matchDataType(params, "Array") && params.length === 0) ||
     (matchDataType(params, "Object") && Object.keys(params).length === 0);
 
-// filter objects
+/**
+ * 过滤对象中的[]、{}、""（包括去空格）、null、undefined
+ * @param {Object} object
+ */
 export const filterObject = object => {
     let obj = {};
     Object.keys(object).map(key => !filterDataType(object[key]) && (obj[key] = object[key]));
@@ -22,13 +35,12 @@ export const filterObject = object => {
 }
 
 /**
- * Get the target value or the key value of the target object
- * Default return "", You can set the default return value
+ * 获取目标值或目标对象的key值
  * @param {any} target 目标对象
  * @param {string} key 目标对象的key值
  * @param {string} value 默认返回值
  */
-export const getTargetVal = ({target, key, value = ""}) => {
+export const getTargetVal = ({target, key, value = null}) => {
     return filterDataType(target)
         ? value
         : Object.is(key, undefined)
@@ -39,21 +51,22 @@ export const getTargetVal = ({target, key, value = ""}) => {
 }
 
 /**
- * Get value constant
+ * 获取常量集合中的key值
  * @param {array} constant 目标常量集合
  * @param {string} value 传入的目标值
  * @param {string} key 目标常量的key
+ * @param {string} flag 默认的返回值
  */
-export const getTargetConst = (constant, value, key) => {
-    if (filterDataType(value)) return "--";
+export const getTargetConst = (constant, value, key, flag = '--') => {
+    if (filterDataType(value)) return flag;
 
     if (getDataType(value, "String")) {
         let arr = constant.filter(v => v.value === value);
-        return arr.length === 0 ? "--" : arr[0][key];
+        return arr.length === 0 ? flag : arr[0][key];
     }
 }
 
-// digitalFormat 2 decimal places reserved by default
+// 计算2位（包括2位）以内的小数，主要用于金额的准确率（避免出现0.1+0.2,0.8*3误差)
 export const digitalFormat = (type, number, other) => {
     let total = '0';
     switch(type) {
@@ -75,5 +88,5 @@ export const digitalFormat = (type, number, other) => {
 
 // 数字格式化为千分位
 export const digitalToThousandth = params => {
-    return filterDataType(params) ? "" :params.toString().replace(/\d{1,3}(?=(\d{3})+(?:$|\.))/g,s=> `${s},`);
+    return filterDataType(params) ? null : Number(params).toString().replace(/\d{1,3}(?=(\d{3})+(?:$|\.))/g,s=> `${s},`);
 }

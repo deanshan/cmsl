@@ -26,7 +26,7 @@
 + 返回值{string}
 + target{any}(必填)
 + key{string}(选填) target的key,当target为对象时填写
-+ value{string}(选填)   默认值 ""，经过filterParams过滤后，如果目标对象（或key）不存在或不符合要求，返回的值为value
++ value{string}(选填)   默认值 null，经过filterParams过滤后，如果目标对象（或key）不存在或不符合要求，返回的值为value
 
 #### getTargetConst(*constant, value, key*)：返回常量集合中的key值
 
@@ -47,6 +47,7 @@
 + 返回值{string} 不传，默认返回""
 + params{string,number}(选填)
 
+
 ### 日期时间
 
 #### dateTimeFormat(*{ts[,type,flag,isTime]}*)  日期格式化
@@ -63,7 +64,9 @@
 
 ### DOM操作
 
-#### trim(*str[,type]*)  去除（a：所有，b：两边，l：左边，r：右边）空格
+#### trim(*str[,type]*)  去除（all：所有，between：两边，left：左边，right：右边）空格
 + 返回值{number}    时间戳
 + str{string}（必传）
-+ type{string}（选填）  可选值 'a','b','l','r'，默认值 'a'
++ type{string}（选填）  可选值 'all','between','left','right'，默认值 'all'
+
+#### closeCurrentPage() 关闭当前页面

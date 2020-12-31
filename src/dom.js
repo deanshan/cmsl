@@ -16,16 +16,29 @@
 //     }
 // }
 
-// Remove space, type: a-all spaces b-space before and after l-space before and r-space after
-export const trim = (str, type = 'a') => {
+/**
+ * 关闭当前页面
+ */
+export const closeCurrentPage = () => {
+    window.opener = null;
+    window.open('','_self');
+    window.close();
+}
+
+/**
+ * 删除空格
+ * @param {String} str
+ * @param {String} type all：所有空格 | between：头尾空格 | left：头部空格 | right：尾部空格
+ */
+export const trim = (str, type = 'all') => {
     switch (type) {
-        case 'a':
+        case 'all':
             return str.replace(/\s+/g, "");
-        case 'b':
+        case 'between':
             return str.replace(/(^\s*)|(\s*$)/g, "");
-        case 'l':
+        case 'left':
             return str.replace(/(^\s*)/g, "");
-        case 'r':
+        case 'right':
             return str.replace(/(\s*$)/g, "");
         default:
             return str;

@@ -1,21 +1,23 @@
 /**
- * Safari and IE are not compatible with '-' and '.', all conversion "/"
+ * Safari和IE与“-”和“.”不兼容，全部转换为“/”
  * @param {string} dateTime 标准日期, 格式为 yy-mm-dd hh:mm:ss 或 yy-mm-dd
- * @param {boolean} isTime 返回的时间戳是否包含具体时间，默认值 true
+ * @param {boolean} isTime 返回的时间戳是否包含具体时间，默认值 true 不包含
  */
 export const dateFormatConversion = (dateTime, isTime = true) => {
-    let t = dateTime.replace(/-/g, "/").replace(/\./g,'/');
-    if(isTime) t = t.replace(/\d\d:\d\d:\d\d/, "");
+
+    if(!dateTime) return null;
+
+    let t = dateTime.replace(/-/g, "/").replace(/\./g,'/'); //  把日期中包含的'-','.'全部转换成'/'
+    isTime && (t = t.replace(/\d\d:\d\d:\d\d/, ""));
     return new Date(t).getTime();
 }
 
 /**
- * date time format default format: yy-mm-dd hh:mm:ss
- * dateTimeFormat({ts[,type,flag,isTime]})
- * @param {number} ts
- * @param {string} flag 默认值：'-'
- * @param {boolean} isTime 是否含有具体时间 默认值 ture
- * @param {string} type 可选值：'YM'、'MD'（不区分大小写） 默认值：'YMD'
+ * 日期时间格式化 默认格式yy-mm-dd hh:mm:ss
+ * @param {Date} ts 标准时间或时间戳
+ * @param {string} flag 日期拼接符号 默认值：'-'
+ * @param {boolean} isTime 是否含有时间 默认值 ture
+ * @param {string} type 返回的日期格式 可选值：'YM'、'MD'（不区分大小写） 默认值：'YMD'
  */
 export const dateTimeFormat = ({ts, flag = '-', isTime = true, type = 'ymd'}) => {
 
