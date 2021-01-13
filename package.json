@@ -1,6 +1,6 @@
 {
   "name": "cmsl",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "collection of common methods",
   "main": "./dist/cmsl.min.js",
   "scripts": {

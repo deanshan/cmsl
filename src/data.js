@@ -88,5 +88,16 @@ export const digitalFormat = (type, number, other) => {
 
 // 数字格式化为千分位
 export const digitalToThousandth = params => {
-    return filterDataType(params) ? null : Number(params).toString().replace(/\d{1,3}(?=(\d{3})+(?:$|\.))/g,s=> `${s},`);
+    let pattern1 = /^[0-9]+$/;
+    let pattern2 = /^[0-9]+(\.[0-9]{1})$/;
+    params = Number(params).toString();
+    // 没有小数
+    if(pattern1.test(params)) {
+        params += ".00";
+    }
+    // 一位小数
+    if(pattern2.test(params)) {
+        params += "0";
+    }
+    return filterDataType(params) ? null : params.replace(/\d{1,3}(?=(\d{3})+(?:$|\.))/g,s=> `${s},`);
 }
