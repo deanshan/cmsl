@@ -3,7 +3,6 @@ let path = require('path');
 let webpack = require('webpack');
 
 let {CleanWebpackPlugin} = require('clean-webpack-plugin');
-console.log(CleanWebpackPlugin)
 
 module.exports = {
 
